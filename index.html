@@ -1,0 +1,341 @@
+<! ```DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>64 Yadav</title>
+
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #0f0f0f;
+      --text-color: #f0f0f0;
+      --card-color: #1a1a1a;
+      --accent-color: #1e40af;
+      --skill-bg: #121212;
+    }
+    .light-mode {
+      --bg-color: #f9fafb;
+      --text-color: #1f2937;
+      --card-color: #ffffff;
+      --accent-color: #2563eb;
+      --skill-bg: #e5e7eb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+h1, h2, h3 {
+  font-family: 'Raleway', sans-serif;
+}
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--accent-color);
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .hero, .about, .skills, .projects, .contact, .social {
+      background: var(--card-color);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideIn 1s forwards;
+    }
+    .hero { animation-delay: 0.2s; transform: translateX(-50px); }
+    .about { animation-delay: 0.4s; transform: translateX(50px); }
+    .skills { animation-delay: 0.6s; }
+    .projects { animation-delay: 0.8s; }
+    .social { animation-delay: 1s; }
+    .contact { animation-delay: 1.2s; }
+
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    .hero-buttons button, .contact form button {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hero-buttons button:hover, .contact form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--accent-color);
+    }
+
+    .about { display: flex; align-items: center; flex-wrap: wrap; }
+    .about img {
+      width: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .skill {
+      background: var(--skill-bg);
+      text-align: center;
+      padding: 15px;
+      border-radius: 5px;
+      color: var(--accent-color);
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .skill:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+    .skill i {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .project {
+      background: var(--skill-bg);
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .project img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .project:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: scale(1.02);
+    }
+    .project a {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 5px 10px;
+      background: white;
+      color: var(--accent-color);
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .project a:hover {
+      background: var(--text-color);
+      color: var(--accent-color);
+    }
+
+    .social-icons {
+      text-align: center;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 24px;
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .social-icons a::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      opacity: 0;
+      background: #333;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .social-icons a:hover::after {
+      transform: translateX(-50%) translateY(-30px) scale(1.1) rotate(-2deg);
+      opacity: 1;
+    }
+
+    /* Real brand colors */
+    .social-icons a.github { color: #333; }
+    .social-icons a.linkedin { color: #0077b5; }
+    .social-icons a.twitter { color: #1da1f2; }
+    .social-icons a.whatsapp { color: #25d366; }
+    .social-icons a.facebook { color: #1877f2; }
+    .social-icons a.instagram { color: #e4405f; }
+    .social-icons a.youtube { color: #ff0000; }
+    .social-icons a.telegram { color: #0088cc; }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact input, .contact textarea {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    @media (min-width: 600px) {
+      .hero-buttons button {
+        width: auto;
+        margin-right: 10px;
+      }
+    }
+    @media (max-width: 600px) {
+      .about { flex-direction: column; text-align: center; }
+      .about img { margin-bottom: 10px; }
+      .mode-toggle { font-size: 20px; top: 10px; right: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="mode-toggle" onclick="toggleMode()"><i class="fas fa-adjust"></i></button>
+
+  <div class="container">
+
+    <div class="hero">
+      <h1>Hi, I'm ydv.</h1>
+      <p>A developer, psychology learner, and critical thinker building solutions blending tech & mind.</p>
+      <div class="hero-buttons">
+        <button>Download Resume</button>
+        <button>View Projects</button>
+      </div>
+    </div>
+
+    <div class="about">
+      <img src="profile.png" alt="Profile" />
+      <div>
+        <h2>About Me</h2>
+        <p>I am a full stack developer who installs software, fixes hardware issues, and trains people to use computers better. I love learning new technologies to build useful websites and tools.</p>
+
+      </div>
+    </div>
+
+    <div class="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill"><i class="fab fa-html5"></i>HTML</div>
+        <div class="skill"><i class="fab fa-css3-alt"></i>CSS</div>
+        <div class="skill"><i class="fab fa-js-square"></i>JavaScript</div>
+        <div class="skill"><i class="fab fa-php"></i>PHP</div>
+        <div class="skill"><i class="fas fa-database"></i>MySQL</div>
+        <div class="skill"><i class="fas fa-brain"></i>Psychology</div>
+      </div>
+    </div>
+
+    <div class="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project">
+          <img src="https://via.placeholder.com/400x200" alt="Project 1">
+          <h3>Project 1</h3>
+          <p>This project is about building a responsive portfolio website with HTML and CSS.</p>
+          <a href="#">View Project</a>
+        </div>
+        <div class="project">
+          <img src="https://via.placeholder.com/400x200" alt="Project 2">
+          <h3>Project 2</h3>
+          <p>This project is a PHP CRUD application connected with MySQL database.</p>
+          <a href="#">View Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="social">
+      <h2>Connect with Me</h2>
+      <div class="social-icons">
+        <a href="#" class="github" data-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="linkedin" data-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="twitter" data-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="whatsapp" data-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="facebook" data-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="instagram" data-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="youtube" data-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="telegram" data-label="Telegram"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
+
+    <div class="contact">
+      <h2>Get in Touch</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 ydv | Crafted with ❤️ blending tech & thoughts.
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+
+</body>
+</html>```
