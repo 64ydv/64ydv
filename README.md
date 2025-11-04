@@ -56,7 +56,7 @@
 
 ### 📫 Connect With Me
 <p align="center">
-  <a href="mailto:rroy89324@gmail.com">
+  <a href="mailto:ranjeetroi435@gmail.com">
     <img src="https://img.shields.io/badge/Email-00FF9C?style=for-the-badge&logo=gmail&logoColor=000000" />
   </a>
   <a href="https://github.com/64ydv">
